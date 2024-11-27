@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="validate.js" defer></script>
+    <script>
+        // Função de máscara para o campo de telefone
+        function mascaraTelefone(input) {
+            let value = input.value;
+            
+            // Remove qualquer caractere não numérico
+            value = value.replace(/\D/g, '');
+
+            if (value.length > 2) {
+                value = '(' + value.substr(0, 2) + ') ' + value.substr(2);
+            }
+            if (value.length > 10) {
+                value = value.substr(0, 10) + '-' + value.substr(10, 4);
+            }
+
+            input.value = value;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="ComidaDasRosa.png" alt="Logo" class="logo"> <!-- Adicionando a logo no cabeçalho -->
+    </header>
+    <div class="login-container">
+        <h1>Cadastro de Usuário</h1>
+        <form action="register.php" method="POST" id="registerForm">
+            <label for="name">Nome Completo:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="birthdate">Data de Nascimento:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <label for="phone">Telefone:</label>
+            <input type="tel" id="phone" name="phone" required oninput="mascaraTelefone(this)">
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirme a Senha:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" required>
+
+            <label for="street">Rua:</label>
+            <input type="text" id="street" name="street" required>
+
+            <label for="number">Número:</label>
+            <input type="text" id="number" name="number" required>
+
+            <label for="neighborhood">Bairro:</label>
+            <input type="text" id="neighborhood" name="neighborhood" required>
+
+            <label for="complement">Complemento:</label>
+            <input type="text" id="complement">
+
+            <label for="city">Cidade:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">Estado:</label>
+            <input type="text" id="state" name="state" maxlength="2" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <a href="login.html">Já possui conta? Faça login</a>
+    </div>
+</body>
+</html>
